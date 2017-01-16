@@ -9,7 +9,7 @@ include('persistenciaProdutos.php');
 
 	<table class="table">
 		<tr>
-			<td>Nome:</td>
+			<td>Produto:</td>
 			<td><input class="form-control" type="text" name="nome"></td>
 		</tr>
 			<td>Quantidade:</td>

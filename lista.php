@@ -13,7 +13,7 @@ include("persistenciaProdutos.php");
 
 	<thead>
 		<tr>
-			<th>Nome</th>
+			<th>Produto</th>
 			<th>Quantidade</th>
 			<th>Data de Entrada</th>
 			<th>Descrição</th>
@@ -30,11 +30,11 @@ include("persistenciaProdutos.php");
 				<td><?= $produto['quantidade']?></td>
 				<td><?= $produto['dt_entrada']?></td>
 				<td><?= utf8_encode(substr($produto['descricao'], 0, 100))?></td>
-				<td><a class="btn btn-default" href="altera-produto.php?id=<?=$produto['id_produto']?>">mover</a></td>
-				<td><a class="btn btn-primary" href="formulario-altera-produto.php?id=<?=$produto['id_produto']?>">alterar</a></td>
+				<td><a class="btn btn-default" href="formulario-move-produto.php?id=<?=$produto['id']?>">mover</a></td>
+				<td><a class="btn btn-primary" href="formulario-altera-produto.php?id=<?=$produto['id']?>">alterar</a></td>
 				<td>
 					<form action="remove-produto.php" method="post">
-						<input type="hidden" name="id" value="<?=$produto['id_produto']?>">
+						<input type="hidden" name="id" value="<?=$produto['id']?>">
 						<button class="btn btn-danger">remover</button>
 					</form>
 				</td>

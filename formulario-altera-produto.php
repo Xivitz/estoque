@@ -21,7 +21,9 @@ $produto = buscaProduto($conexao, $id);
 
 		</tr>
 			<td>Data de Entrada:</td>
-			<td><input class="form-control" type="date" name="dtEntrada" value="<?=$produto['dtEntrada']?>"></td></td>
+			<td><input class="form-control" type="date" name="dtEntrada" 
+
+			value="<?=$produto['dt_entrada']?>"></td></td>
 		</tr>
 
 		</tr>
@@ -29,7 +31,10 @@ $produto = buscaProduto($conexao, $id);
 			<td><textarea class="form-control" name="descricao"><?=$produto['descricao']?></textarea></td>
 		<tr>
 
-			<td><input class="btn btn-primary" type="submit" value="Alterar"></td>
+			<td>
+				<input class="btn btn-primary" type="submit" value="Alterar">
+				<input type="hidden" name="id" value="<?=$produto['id']?>">
+			</td>
 		</tr>
 	</form>
 	</table>

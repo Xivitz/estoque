@@ -1,7 +1,10 @@
 <?php 
-include("cabecalho.php"); 
-include("conexaoBD.php");
-include("persistenciaProdutos.php");
+include('cabecalho.php'); 
+include('conexaoBD.php');
+include('persistenciaProdutos.php');
+include('logica-usuario.php');
+
+verificaUsuario();
 
 $nome = $_POST['nome'];
 $quantidade = $_POST['quantidade'];
@@ -10,7 +13,7 @@ $descricao = $_POST['descricao'];
 	
 if(insereProduto($conexao, $nome, $quantidade, $dtEntrada, $descricao))
 {?>
-	<p class="alert-success">O produto <?php echo $nome; ?> foi <?php echo $preco; ?> adicionado com sucesso! </p>
+	<p class="alert-success">O produto <?php echo $nome; ?> foi adicionado com sucesso! </p>
 <?php } else {
 	$msg = mysqli_error($conexao);
 ?>

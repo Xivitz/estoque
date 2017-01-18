@@ -16,5 +16,5 @@ function verificaUsuario () {
 }
 
 function logaUsuario($email) {
-	setcookie('usuario_logado', email);
+	setcookie('usuario_logado', $usuario['email']);
 }

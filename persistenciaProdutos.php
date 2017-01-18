@@ -18,7 +18,8 @@ function insereProduto($conexao, $nome, $quantidade, $dtEntrada, $descricao)
 
 function alteraProduto($conexao, $id, $nome, $quantidade, $dtEntrada, $descricao) 
 {
-	$query = "update produtos set nome = '{$nome}', quantidade = {$quantidade}, dt_entrada = {$dtEntrada}, descricao = '{$descricao}' where id = {$id}";
+	$query = "update produtos set nome = '{$nome}', quantidade = {$quantidade}, dt_entrada = {$dtEntrada}, descricao = '{$descricao}'
+	where id = {$id}";
 	$produtos = mysqli_query($conexao, $query);
 	return $produtos;
 }

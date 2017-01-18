@@ -1,8 +1,10 @@
 <?php 
-include("cabecalho.php");	
-include("conexaoBD.php");
-include("persistenciaProdutos.php");
+include('cabecalho.php');
+include('conexaoBD.php');
+include('persistenciaProdutos.php');
+include('logica-usuario.php');
 
+verificaUsuario();
 ?>
 
 <?php if (array_key_exists("removido", $_GET) && $_GET['removido'] == 'true') : ?>
@@ -15,7 +17,7 @@ include("persistenciaProdutos.php");
 		<tr>
 			<th>Produto</th>
 			<th>Quantidade</th>
-			<th>Data de Entrada</th>
+			<th>Data de Entrada</th>l
 			<th>Descrição</th>
 		</tr>
 	</thead>
@@ -26,7 +28,7 @@ include("persistenciaProdutos.php");
 			foreach ($produtos as $produto) :
 			?>
 			<tr>
-				<td><?=$produto['nome'];?></td>
+				<td><?= $produto['nome']?></td>
 				<td><?= $produto['quantidade']?></td>
 				<td><?= $produto['dt_entrada']?></td>
 				<td><?= utf8_encode(substr($produto['descricao'], 0, 100))?></td>

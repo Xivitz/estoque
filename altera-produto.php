@@ -2,19 +2,19 @@
 include("cabecalho.php"); 
 include("conexaoBD.php");
 include("persistenciaProdutos.php");
-//include("logica-usuario.php");
+include("logica-usuario.php");
 
-//verificaUsuario();
+verificaUsuario();
 
 $id = $_POST['id'];
 $nome = $_POST['nome'];
 $quantidade = $_POST['quantidade'];
-$dt_entrada = $_POST['dt_entrada'];
+$dtEntrada = $_POST['dtEntrada'];
 $descricao = $_POST['descricao'];
 
 //alteração realizada aqui.
 
-if(alteraProduto($conexao, $id, $nome, $quantidade, $dt_entrada, $descricao))
+if(alteraProduto($conexao, $id, $nome, $quantidade, $dtEntrada, $descricao))
 
 {?>
 	<p class="alert-success">O produto <?php echo $nome; ?> foi, alterado com sucesso! </p>

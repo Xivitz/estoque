@@ -11,16 +11,15 @@ include("logica-usuario.php");
 <?php }?>
 
 <?php if(isset($_GET['falhaDeSeguranca']) && $_GET['falhaDeSeguranca']==true) {?>
-	<p class="alert-danger">Você não tem acesso!</p>
+	<p class="alert-danger">Você não tem acesso a essa funcionalidade!</p>
 <?php }?>
 
-	<h1>Welcome!</h1>
+	<img src="./imagens/logo.jpg">
 
 		<?php if(usuarioEstaLogado()) {?>
 			<p class="text-success">Você está logado como <?=usuarioLogado()?></p>
 		<?php } else { ?>
 
-	<h3>Login</h3>
 	<form action="login.php" method="POST">
 		<table class="table">
 			<tr>

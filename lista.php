@@ -17,7 +17,7 @@ verificaUsuario();
 		<tr>
 			<th>Produto</th>
 			<th>Quantidade</th>
-			<th>Data de Entrada</th>l
+			<th>Data de Entrada</th>
 			<th>Descrição</th>
 		</tr>
 	</thead>
@@ -28,12 +28,12 @@ verificaUsuario();
 			foreach ($produtos as $produto) :
 			?>
 			<tr>
-				<td><?= $produto['nome']?></td>
-				<td><?= $produto['quantidade']?></td>
-				<td><?= $produto['dt_entrada']?></td>
-				<td><?= utf8_encode(substr($produto['descricao'], 0, 100))?></td>
-				<td><a class="btn btn-default" href="formulario-move-produto.php?id=<?=$produto['id']?>">mover</a></td>
-				<td><a class="btn btn-primary" href="formulario-altera-produto.php?id=<?=$produto['id']?>">alterar</a></td>
+				<td><?php echo $produto['nome']?></td>
+				<td><?php echo $produto['quantidade']?></td>
+				<td><?php echo $produto['dt_entrada']?></td>
+				<td><?php echo substr($produto['descricao'], 0, 100)?></td>
+				<td><a class="btn btn-default" href="formulario-move-produto.php?id=<?php echo $produto['id']?>">mover</a></td>
+				<td><a class="btn btn-primary" href="formulario-altera-produto.php?id=<?php echo $produto['id']?>">alterar</a></td>
 				<td>
 					<form action="remove-produto.php" method="post">
 						<input type="hidden" name="id" value="<?=$produto['id']?>">

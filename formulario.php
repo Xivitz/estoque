@@ -2,19 +2,11 @@
 include('cabecalho.php');
 include('conexaoBD.php');
 include('persistenciaProdutos.php');
-//include('logica-usuario.php');
+include('logica-usuario.php');
 
-//verificaUsuario();
-
-if (isset($_COOKIE['usuario_logado'])) {
-	header('Location: index.php?falhaDeSeguranca=true');
-	die;
-}
-
-// testando aqui autenticação de usuário e commits no github.
+verificaUsuario();
 
 ?>
-
 	<h2>Formulário de Cadastro de Produtos</h2>
 	<form action="adiciona-produto.php" method="post">
 

@@ -12,7 +12,9 @@ include("logica-usuario.php");
 
 <?php if(isset($_SESSION['danger'])) {?>
 	<p class="alert-danger"><?php echo $_SESSION['danger']?></p>
-<?php }?>
+<?php 
+	unset($_SESSION['danger']);
+}?>
 
 	<img src="./imagens/logo.jpg">
 

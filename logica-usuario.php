@@ -24,4 +24,5 @@ function logaUsuario($email) {
 
 function logout() {
 	session_destroy();
+	session_start();
 }

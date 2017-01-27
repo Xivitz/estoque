@@ -2,14 +2,10 @@
 include('cabecalho.php');
 include('conexaoBD.php');
 include('persistenciaProdutos.php');
-include('logica-usuario.php');
 
 verificaUsuario();
+mostraAlerta('success');
 ?>
-
-<?php if (array_key_exists("removido", $_GET) && $_GET['removido'] == 'true') : ?>
-	<p class="alert-success">Produto removido com sucesso!</p>
-<?php endif ?>
 
 <table class="table table-striped table-bordered">
 

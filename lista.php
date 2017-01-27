@@ -2,9 +2,10 @@
 include('cabecalho.php');
 include('conexaoBD.php');
 include('persistenciaProdutos.php');
+include('logica-usuario.php');
 
 verificaUsuario();
-mostraAlerta('success');
+
 ?>
 
 <table class="table table-striped table-bordered">

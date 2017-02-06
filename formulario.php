@@ -3,9 +3,7 @@ include('cabecalho.php');
 include('conexaoBD.php');
 include('persistenciaProdutos.php');
 include('logica-usuario.php');
-
 verificaUsuario();
-
 ?>
 	<h2>Formulário de Cadastro de Produtos</h2>
 	<form action="adiciona-produto.php" method="post">

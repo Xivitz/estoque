@@ -40,7 +40,7 @@ function removeProduto ($conexao, $id)
 function moveProduto ($conexao, $id, $data, $quantidade, $destino, $observacao)
 {
 	$query = "select {$quantidade} from produtos where id = {$id}";
-	$resultado = mysqli_query($conexao, $query); //980
+	$resultado = mysqli_query($conexao, $query);
 	$saida = $resultado - $quantidade;
 
 	
@@ -49,6 +49,14 @@ function moveProduto ($conexao, $id, $data, $quantidade, $destino, $observacao)
 
 	$sql = "insert into movimentacoes (id_produto, dt_movimentacao, destino, observacao, produto, quantidade) values ({$id}, {$data}, '{$destino}', '{$observacao}', '{$produto}', {$quantidade})";
 	mysqli_query($conexao, $sql);
-	
+}
 
+function listaMovimentacoes ($conexao)
+{
+	$produtos = array();
+	$resultado = mysqli_query($conexao, "select * from movimentacoes");
+	while ($produto = mysqli_fetch_assoc($resultado)) {
+		array_push($produtos, $produto);
+	}
+	return $produtos;
 }

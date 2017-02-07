@@ -27,7 +27,7 @@ include('mostra-alerta.php');
 					<li><a href="listaMovimentacoes.php">Movimentações</a></li>
 				</ul>
 			</div>
-		</div>		
+		</div>
 	</div>
 
 	<div class="container">

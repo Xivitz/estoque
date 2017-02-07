@@ -7,12 +7,13 @@ include('logica-usuario.php');
 verificaUsuario();
 
 $id = $_POST['id'];
+$nome = $_POST['nome'];
 $data = $_POST['data'];
 $quantidade = $_POST['quantidade'];
 $destino = $_POST['destino'];
 $observacao = $_POST['observacao'];
 	
-if(moveProduto($conexao, $id, $data, $quantidade, $destino, $observacao))
+if(moveProduto($conexao, $id, $nome, $data, $quantidade, $destino, $observacao))
 {?>
 	<p class="alert-success">O produto <?php echo $nome; ?> foi retirado com sucesso! </p>
 <?php } else {

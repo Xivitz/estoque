@@ -31,32 +31,36 @@ function buscaProduto ($conexao, $id)
 	return mysqli_fetch_assoc($resultado);
 }
 
-function removeProduto ($conexao, $id) 
+function removeProduto ($conexao, $id)
 {
 	$query = "delete from produtos where id = {$id}";
 	return mysqli_query($conexao, $query);
 }
 
-function moveProduto ($conexao, $id, $data, $quantidade, $destino, $observacao)
+function moveProduto ($conexao, $id, $nome, $data, $quantidade, $destino, $observacao)
 {
-	$query = "select {$quantidade} from produtos where id = {$id}";
+	$query = "select quantidade from produtos where id = {$id}";
 	$resultado = mysqli_query($conexao, $query);
-	$saida = $resultado - $quantidade;
-
 	
-	$alteracao = "update produtos set quantidade = {$quantidade}";
-	mysqli_query($conexao, $alteracao);
+	//converter a variável $resultado em inteiro para realizar o if abaixo.
 
-	$sql = "insert into movimentacoes (id_produto, dt_movimentacao, destino, observacao, produto, quantidade) values ({$id}, {$data}, '{$destino}', '{$observacao}', '{$produto}', {$quantidade})";
-	mysqli_query($conexao, $sql);
+	if ($resultado >= $quantidade) {
+		$saida = $resultado - $quantidade;
+		$alteracao = "update produtos set quantidade = {$saida} where id = {$id}";
+		mysqli_query($conexao, $alteracao);
+		$sql = "insert into movimentacoes (id_produto, dt_movimentacao, destino, observacao, produto, quantidade) values ({$id}, {$data},
+				'{$destino}', '{$observacao}', '{$nome}', {$quantidade})";
+		return mysqli_query($conexao, $sql);
+	} 
+
 }
 
 function listaMovimentacoes ($conexao)
 {
-	$produtos = array();
+	$movimentacoes = array();
 	$resultado = mysqli_query($conexao, "select * from movimentacoes");
 	while ($produto = mysqli_fetch_assoc($resultado)) {
-		array_push($produtos, $produto);
+		array_push($movimentacoes, $produto);
 	}
-	return $produtos;
+	return $movimentacoes;
 }

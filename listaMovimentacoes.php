@@ -3,9 +3,7 @@ include('cabecalho.php');
 include('conexaoBD.php');
 include('persistenciaProdutos.php');
 include('logica-usuario.php');
-
 verificaUsuario();
-
 ?>
 
 <table class="table table-striped table-bordered">
@@ -15,7 +13,8 @@ verificaUsuario();
 			<th>Produto</th>
 			<th>Quantidade</th>
 			<th>Data de Entrada</th>
-			<th>Descrição</th>
+			<th>Destino</th>
+			<th>Observações</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -29,6 +28,7 @@ verificaUsuario();
 				<td><?php echo $produto['quantidade']?></td>
 				<td><?php echo $produto['dt_movimentacao']?></td>
 				<td><?php echo $produto['destino']?></td>
+				<td><?php echo $produto['observacao']?></td>
 			</tr>
 		<?php
 			endforeach
@@ -36,4 +36,4 @@ verificaUsuario();
 	</tbody>
 </table>
 
-<?= include("rodape.php"); ?>
+<?php include("rodape.php"); ?>

@@ -47,6 +47,8 @@ function moveProduto ($conexao, $id, $nome, $data, $quantidade, $destino, $obser
 		array_push($retorno, $movimentacoes);
 	}
 
+	//Conversão para sucesso ao subtrair a quantidade em estoque.
+
 	$qntProdutosEmEstoque = (int) $retorno[0]['quantidade'];
 
 	if ($qntProdutosEmEstoque >= $quantidade) {

@@ -17,9 +17,8 @@ if(moveProduto($conexao, $id, $nome, $data, $quantidade, $destino, $observacao))
 {?>
 	<p class="alert-success">O produto <?php echo $nome; ?> foi retirado com sucesso! </p>
 <?php } else {
-	$msg = mysqli_error($conexao);
 ?>
-	<p class="alert-danger">O produto <?php echo $nome; ?> não foi retirado: <?php echo $msg ?> </p>
+	<p class="alert-danger">O produto <?php echo $nome; ?> não foi retirado pois não há itens suficientes em estoque.</p>
 <?php 
 }
 

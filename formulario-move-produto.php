@@ -7,7 +7,7 @@ $id = $_GET['id'];
 $produto = buscaProduto($conexao, $id);
 ?>
 
-	<h2>Formulário de Saída de Produtos</h2>
+	<h2>Saída de Produtos</h2>
 	<form action="move-produto.php" method="post">
 
 	<table class="table">
@@ -18,7 +18,7 @@ $produto = buscaProduto($conexao, $id);
 
 		<tr>
 			<td>Data:</td>
-			<td><input class="form-control" type="text" name="data" value="<?php echo date('Y-m-d');?>"></td>
+			<td><input class="form-control" type="text" name="data" value="<?php echo date('Y/m/d');?>"></td>
 		</tr>
 
 		</tr>

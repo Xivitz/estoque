@@ -10,7 +10,7 @@ $nome = $_POST['nome'];
 $quantidade = $_POST['quantidade'];
 $dtEntrada = $_POST['dtEntrada'];
 $descricao = $_POST['descricao'];
-	
+
 if(insereProduto($conexao, $nome, $quantidade, $dtEntrada, $descricao))
 {?>
 	<p class="alert-success">O produto <?php echo $nome; ?> foi adicionado com sucesso! </p>

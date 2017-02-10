@@ -12,14 +12,16 @@ function listaProdutos ($conexao)
 
 function insereProduto ($conexao, $nome, $quantidade, $dtEntrada, $descricao)
 {
-	$query = "insert into produtos (nome, quantidade, dt_entrada, descricao) values ('{$nome}', {$quantidade}, {$dtEntrada}, '{$descricao}')";
+	
+	$data = implode("-", array_reverse(explode("/", $dtEntrada)));
+	$query = "insert into produtos (nome, quantidade, dt_entrada, descricao) values ('{$nome}', {$quantidade}, '{$data}', '{$descricao}')";
 	return mysqli_query($conexao, $query);
 }
 
 function alteraProduto ($conexao, $id, $nome, $quantidade, $dtEntrada, $descricao) 
 {
 	$query = "update produtos set nome = '{$nome}', quantidade = {$quantidade}, dt_entrada = {$dtEntrada}, descricao = '{$descricao}'
-	where id = {$id}";
+				where id = {$id}";
 	$produtos = mysqli_query($conexao, $query);
 	return $produtos;
 }
@@ -57,8 +59,10 @@ function moveProduto ($conexao, $id, $nome, $data, $quantidade, $destino, $obser
 		$qntProdutosAtual = "update produtos set quantidade = {$saida} where id = {$id}";
 		mysqli_query($conexao, $qntProdutosAtual);
 
+		$dataMovimentacao = implode("-", array_reverse(explode("/", $data)));
+
 		$saidaProdutos = "insert into movimentacoes (id_produto, dt_movimentacao, destino, observacao, produto, quantidade) values ({$id},
-		 				 {$data}, '{$destino}', '{$observacao}', '{$nome}', {$quantidade})";
+		 				 {$dataMovimentacao}, '{$destino}', '{$observacao}', '{$nome}', {$quantidade})";
 	}
 	
 	return mysqli_query($conexao, $saidaProdutos);

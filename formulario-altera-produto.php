@@ -13,10 +13,10 @@ $produto = buscaProduto($conexao, $id);
 	<table class="table">
 		<tr>
 			<td>Nome:</td>
-			<td><input class="form-control" type="text" name="nome" value="<?=$produto['nome']?>"></td>
+			<td><input class="form-control" type="text" name="nome" required value="<?=$produto['nome']?>"></td>
 		</tr>
 			<td>Quantidade:</td>
-			<td><input class="form-control" type="number" name="quantidade" value="<?=$produto['quantidade']?>"></td></td>
+			<td><input class="form-control" type="number" name="quantidade" required value="<?=$produto['quantidade']?>"></td></td>
 		</tr>
 
 		</tr>

@@ -11,15 +11,15 @@ verificaUsuario();
 	<table class="table">
 		<tr>
 			<td>Produto:</td>
-			<td><input class="form-control" type="text" name="nome"></td>
+			<td><input class="form-control" type="text" name="nome" required></td>
 		</tr>
 			<td>Quantidade:</td>
-			<td><input class="form-control" type="number" name="quantidade"></td></td>
+			<td><input class="form-control" type="number" name="quantidade" required></td></td>
 		</tr>
 
 		</tr>
 			<td>Data de Entrada:</td>
-			<td><input class="form-control" type="date" name="dtEntrada"></td></td>
+			<td><input class="form-control" type="text" name="dtEntrada" value="<?php echo date('d/m/Y');?>"></td></td>
 		</tr>
 
 		</tr>

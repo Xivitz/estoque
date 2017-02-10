@@ -27,7 +27,7 @@ verificaUsuario();
 			<tr>
 				<td><?php echo $produto['nome']?></td>
 				<td><?php echo $produto['quantidade']?></td>
-				<td><?php echo $produto['dt_entrada']?></td>
+				<td><?php echo implode("/", array_reverse(explode("-",  $produto['dt_entrada'])))?></td>
 				<td><?php echo substr($produto['descricao'], 0, 100)?></td>
 				<td><a class="btn btn-default" href="formulario-move-produto.php?id=<?php echo $produto['id']?>">mover</a></td>
 				<td><a class="btn btn-primary" href="formulario-altera-produto.php?id=<?php echo $produto['id']?>">alterar</a></td>

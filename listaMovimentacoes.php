@@ -26,7 +26,7 @@ verificaUsuario();
 			<tr>
 				<td><?php echo $produto['produto']?></td>
 				<td><?php echo $produto['quantidade']?></td>
-				<td><?php echo $produto['dt_movimentacao']?></td>
+				<td><?php echo implode("/", array_reverse(explode("-", $produto['dt_movimentacao'])))?></td>
 				<td><?php echo $produto['destino']?></td>
 				<td><?php echo $produto['observacao']?></td>
 			</tr>

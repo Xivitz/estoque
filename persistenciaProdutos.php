@@ -18,9 +18,10 @@ function insereProduto ($conexao, $nome, $quantidade, $dtEntrada, $descricao)
 	return mysqli_query($conexao, $query);
 }
 
-function alteraProduto ($conexao, $id, $nome, $quantidade, $dtEntrada, $descricao) 
+function alteraProduto ($conexao, $id, $nome, $quantidade, $dtEntrada, $descricao)
 {
-	$query = "update produtos set nome = '{$nome}', quantidade = {$quantidade}, dt_entrada = {$dtEntrada}, descricao = '{$descricao}'
+	$data = implode("-", array_reverse(explode("/", $dtEntrada)));
+	$query = "update produtos set nome = '{$nome}', quantidade = {$quantidade}, dt_entrada = '{$data}', descricao = '{$descricao}'
 				where id = {$id}";
 	$produtos = mysqli_query($conexao, $query);
 	return $produtos;
@@ -48,9 +49,7 @@ function moveProduto ($conexao, $id, $nome, $data, $quantidade, $destino, $obser
 	while ($movimentacoes = mysqli_fetch_assoc($resultado)) {
 		array_push($retorno, $movimentacoes);
 	}
-
 	//Conversão para sucesso ao subtrair a quantidade em estoque.
-
 	$qntProdutosEmEstoque = (int) $retorno[0]['quantidade'];
 
 	if ($qntProdutosEmEstoque >= $quantidade) {
@@ -59,12 +58,11 @@ function moveProduto ($conexao, $id, $nome, $data, $quantidade, $destino, $obser
 		$qntProdutosAtual = "update produtos set quantidade = {$saida} where id = {$id}";
 		mysqli_query($conexao, $qntProdutosAtual);
 
-		$dataMovimentacao = implode("-", array_reverse(explode("/", $data)));
+		$dataMovimentacao = implode("-", array_reverse(explode("/", $data)));		
 
 		$saidaProdutos = "insert into movimentacoes (id_produto, dt_movimentacao, destino, observacao, produto, quantidade) values ({$id},
-		 				 {$dataMovimentacao}, '{$destino}', '{$observacao}', '{$nome}', {$quantidade})";
-	}
-	
+		 				 '{$dataMovimentacao}', '{$destino}', '{$observacao}', '{$nome}', {$quantidade})";		 				 
+	}	
 	return mysqli_query($conexao, $saidaProdutos);
 }
 
@@ -76,4 +74,16 @@ function listaMovimentacoes ($conexao)
 		array_push($movimentacoes, $produto);
 	}
 	return $movimentacoes;
+}
+
+function produtoMovido ($conexao, $id)
+{
+	$query 		= "select produto from movimentacoes where id_produto = {$id} limit 1";
+	$retorno 	= mysqli_query($conexao, $query);
+	$qtd_linhas = mysqli_num_rows($retorno);
+	
+	if ($qtd_linhas == 1) {
+		return true;
+	}
+	return false;
 }

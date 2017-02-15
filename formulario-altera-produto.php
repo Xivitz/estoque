@@ -20,8 +20,8 @@ $produto = buscaProduto($conexao, $id);
 		</tr>
 
 		</tr>
-			<td>Data de Entrada:</td>
-			<td><input class="form-control" type="date" name="dtEntrada" value="<?=$produto['dt_entrada']?>"></td></td>
+			<td>Data da alteração:</td>
+			<td><input class="form-control" type="text" name="dtEntrada" value="<?php echo date('d/m/Y');?>"></td></td>
 		</tr>
 
 		</tr>
@@ -37,4 +37,4 @@ $produto = buscaProduto($conexao, $id);
 	</form>
 	</table>
 
-<?php include("rodape.php"); ?>	
+<?php include("rodape.php"); ?>

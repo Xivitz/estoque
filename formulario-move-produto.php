@@ -18,7 +18,7 @@ $produto = buscaProduto($conexao, $id);
 
 		<tr>
 			<td>Data:</td>
-			<td><input class="form-control" type="text" name="data" value="<?php echo date('Y/m/d');?>"></td>
+			<td><input class="form-control" type="text" name="data" value="<?php echo date('d/m/Y');?>"></td>
 		</tr>
 
 		</tr>

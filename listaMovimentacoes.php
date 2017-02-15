@@ -12,7 +12,7 @@ verificaUsuario();
 		<tr>
 			<th>Produto</th>
 			<th>Quantidade</th>
-			<th>Data de Entrada</th>
+			<th>Data de saída</th>
 			<th>Destino</th>
 			<th>Observações</th>
 		</tr>

@@ -12,12 +12,10 @@ $quantidade = $_POST['quantidade'];
 $dtEntrada = $_POST['dtEntrada'];
 $descricao = $_POST['descricao'];
 
-//alteração realizada aqui.
-
 if(alteraProduto($conexao, $id, $nome, $quantidade, $dtEntrada, $descricao))
 
 {?>
-	<p class="alert-success">O produto <?php echo $nome; ?> foi, alterado com sucesso! </p>
+	<p class="alert-success">O produto <?php echo $nome; ?> foi alterado com sucesso! </p>
 <?php } else {
 	$msg = mysqli_error($conexao);
 ?>

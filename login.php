@@ -5,8 +5,6 @@ include('logica-usuario.php');
 
 $usuario = buscaUsuario($conexao, $_POST['email'], $_POST['senha']);
 
-var_dump($usuario); die;
-
 
 if ($usuario == null) {
 	$_SESSION['danger'] = 'Usuário ou senha inválida';

@@ -10,11 +10,15 @@ function listaProdutos ($conexao)
 	return $produtos;
 }
 
-function insereProduto ($conexao, $nome, $quantidade, $dtEntrada, $descricao)
-{
+function insereProduto ($conexao, Produto $produto)
+{ 
 	
 	$data = implode("-", array_reverse(explode("/", $dtEntrada)));
-	$query = "insert into produtos (nome, quantidade, dt_entrada, descricao) values ('{$nome}', {$quantidade}, '{$data}', '{$descricao}')";
+	$query = "insert into produtos (nome, quantidade, dt_entrada, descricao)
+			 values ('{$produto->nome}',
+			 		  {$produto->quantidade},
+			 		 '{$produto->dt_entrada}',
+			 		 '{$produto->descricao}')";			 		 
 	return mysqli_query($conexao, $query);
 }
 
@@ -70,9 +74,13 @@ function listaMovimentacoes ($conexao)
 {
 	$movimentacoes = array();
 	$resultado = mysqli_query($conexao, "select * from movimentacoes");
-	while ($produto = mysqli_fetch_assoc($resultado)) {
-		array_push($movimentacoes, $produto);
-	}
+	
+	if ($resultado != 0) {
+		while ($produto = mysqli_fetch_assoc($resultado)) {
+			array_push($movimentacoes, $produto); 
+		}
+	} 
+	echo "Não há movimentações.";
 	return $movimentacoes;
 }
 

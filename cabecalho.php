@@ -1,4 +1,4 @@
-<?php
+ <?php
 error_reporting(E_ALL ^ E_NOTICE);
 include('mostra-alerta.php');
 ?>
@@ -30,6 +30,8 @@ include('mostra-alerta.php');
 					<li><a href="formulario.php">Adicionar Produto</a></li>
 					<li><a href="lista.php">Produtos</a></li>
 					<li><a href="listaMovimentacoes.php">Movimentações</a></li>
+					<li><a href="contato.php">Contato</a></li>
+
 				</ul>
 			</div>
 		</div>

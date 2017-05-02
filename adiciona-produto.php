@@ -1,23 +1,27 @@
 <?php 
-include('cabecalho.php'); 
-include('conexaoBD.php');
-include('persistenciaProdutos.php');
-include('logica-usuario.php');
+require_once('class/Produto.php');
+require_once('cabecalho.php');
+require_once('conexaoBD.php');
+require_once('persistenciaProdutos.php');
+require_once('logica-usuario.php');
 
 verificaUsuario();
 
-$nome = $_POST['nome'];
-$quantidade = $_POST['quantidade'];
-$dtEntrada = $_POST['dtEntrada'];
-$descricao = $_POST['descricao'];
+$produto = new Produto;
 
-if(insereProduto($conexao, $nome, $quantidade, $dtEntrada, $descricao))
+$produto->nome = $_POST['nome'];
+$produto->quantidade = $_POST['quantidade'];
+$produto->dtEntrada = $_POST['dtEntrada'];
+$produto->descricao = $_POST['descricao'];
+
+
+if(insereProduto($conexao, $produto))
 {?>
-	<p class="alert-success">O produto <?php echo $nome; ?> foi adicionado com sucesso! </p>
+	<p class="alert-success">O produto <?php echo $produto->nome; ?> foi adicionado com sucesso! </p>
 <?php } else {
 	$msg = mysqli_error($conexao);
 ?>
-	<p class="alert-danger">O produto <?php echo $nome; ?> não foi adicionado: <?php echo $msg ?></p>
+	<p class="alert-danger">O produto <?php echo $produto->nome; ?> não foi adicionado: <?php echo $msg ?></p>
 <?php 
 }
 

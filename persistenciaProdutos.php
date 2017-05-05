@@ -1,10 +1,19 @@
 <?php
- 
+require_once('class/Produto.php ');
+require_once('conexaoBD.php');
+
 function listaProdutos ($conexao)
 {
 	$produtos = array();
 	$resultado = mysqli_query($conexao, "select * from produtos");
-	while ($produto = mysqli_fetch_assoc($resultado)) {
+	while ($produtoAtual = mysqli_fetch_assoc($resultado)) {
+		
+		$produto = new Produto;
+		$produto ->id 			= $produtoAtual['id'];
+		$produto ->nome 		= $produtoAtual['nome'];
+		$produto ->quantidade   = $produtoAtual['quantidade'];
+		$produto ->dt_entrada 	= $produtoAtual['dt_entrada'];
+		$produto ->descricao 	= $produtoAtual['descricao'];
 		array_push($produtos, $produto);
 	}
 	return $produtos;
@@ -12,13 +21,13 @@ function listaProdutos ($conexao)
 
 function insereProduto ($conexao, Produto $produto)
 { 
-	
 	$data = implode("-", array_reverse(explode("/", $dtEntrada)));
+	
 	$query = "insert into produtos (nome, quantidade, dt_entrada, descricao)
 			 values ('{$produto->nome}',
 			 		  {$produto->quantidade},
-			 		 '{$produto->dt_entrada}',
-			 		 '{$produto->descricao}')";			 		 
+			 		 '{$produto->data}',
+			 		 '{$produto->descricao}')";
 	return mysqli_query($conexao, $query);
 }
 

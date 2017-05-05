@@ -25,15 +25,15 @@ verificaUsuario();
 			foreach ($produtos as $produto) :
 			?>
 			<tr>
-				<td><?php echo $produto['nome']?></td>
-				<td><?php echo $produto['quantidade']?></td>
-				<td><?php echo implode("/", array_reverse(explode("-", $produto['dt_entrada'])))?></td>
-				<td><?php echo substr($produto['descricao'], 0, 100)?></td>
-				<td><a class="btn btn-default" href="formulario-move-produto.php?id=<?php echo $produto['id']?>">mover</a></td>
-				<td><a class="btn btn-primary" href="formulario-altera-produto.php?id=<?php echo $produto['id']?>">alterar</a></td>
-				<td>
+				<td><?php echo $produto ->nome?></td>
+				<td><?php echo $produto ->quantidade?></td>
+				<td><?php echo implode("/", array_reverse(explode("-", $produto->dt_entrada)))?></td>
+				<td><?php echo substr($produto ->descricao, 0, 100)?></td>
+				<td><a class="btn btn-default" href="formulario-move-produto.php?id=<?php echo $produto->id?>">mover</a></td>
+				<td><a class="btn btn-primary" href="formulario-altera-pro	duto.php?id=<?php echo $produto->id?>">alterar</a></td>
+				<td>  
 					<form action="remove-produto.php" method="post">
-						<input type="hidden" name="id" value="<?=$produto['id']?>">
+						<input type="hidden" name="id" value="<?=$produto->id?>">
 						<button class="btn btn-danger">remover</button>
 					</form>
 				</td>

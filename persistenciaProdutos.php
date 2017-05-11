@@ -22,7 +22,7 @@ function listaProdutos ($conexao)
 function insereProduto ($conexao, Produto $produto)
 { 
 	$data = implode("-", array_reverse(explode("/", $dtEntrada)));
-	
+
 	$query = "insert into produtos (nome, quantidade, dt_entrada, descricao)
 			 values ('{$produto->nome}',
 			 		  {$produto->quantidade},
@@ -47,7 +47,7 @@ function buscaProduto ($conexao, $id)
 	return mysqli_fetch_assoc($resultado);
 }
 
-function removeProduto ($conexao, $id)
+function removeProduto ($conexao, $id)  
 {
 	$query = "delete from produtos where id = {$id}";
 	return mysqli_query($conexao, $query);

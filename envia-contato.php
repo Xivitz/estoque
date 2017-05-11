@@ -15,7 +15,9 @@ $mail->SMTPAuth = true;
 $mail->Username = 'diamatheus@gmail.com';
 $mail->Password = 'xivitz194032';
 
+//remetente
 $mail->setFrom('diamatheus@gmail.com', "Matheus Dias");
+//destinatário
 $mail->addAddress('diamatheusimoveis@gmail.com');
 $mail->Subject = 'Email de contato estoque';
 $mail->msgHTML('<html>de: {$nome}<br/>email: {$email}<br/>mensagem: {$mensagem}</html>');

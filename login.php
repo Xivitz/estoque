@@ -18,6 +18,3 @@ if ($usuario == null) {
 die();
 
 ?>
-
-
-
